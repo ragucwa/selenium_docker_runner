@@ -1,0 +1,14 @@
+version: "3"
+services:
+  login_suite:
+    image: guttekkk/selenium-training
+    environment:
+      - automation_password=secret_sauce
+      - grid_address=selenium-hub
+      - TEST_GROUP=login
+  cart_items_suite:
+    image: guttekkk/selenium-training
+    environment:
+      - automation_password=secret_sauce
+      - grid_address=selenium-hub
+      - TEST_GROUP=cart_items

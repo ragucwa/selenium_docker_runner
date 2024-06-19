@@ -1,0 +1,21 @@
+version: "3"
+services:
+  selenium-hub: 
+    image: selenium/hub:4.16
+    container_name: selenium-hub
+  chrome:
+    image: selenium/node-chrome:4.16
+    shm_size: 2gb
+    depends_on:
+    - selenium-hub
+    deploy:
+      replicas: 1
+    env_file: .env
+  firefox:
+    image: selenium/node-firefox:4.16
+    shm_size: 2gb
+    depends_on:
+    - selenium-hub
+    deploy:
+      replicas: 1
+    env_file: .env
