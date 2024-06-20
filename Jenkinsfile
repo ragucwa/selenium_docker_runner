@@ -6,9 +6,14 @@ pipeline{
                 bat "docker-compose -f grid.yaml up -d"
             }
         }
-        stage('Run tests'){
+        stage('Run login tests'){
             steps{
-                bat "docker-compose -f test-suites.yaml up --exit-code-from test-suites"
+                bat "docker-compose -f test-suites.yaml up --exit-code-from login_suite"
+            }
+        }
+        stage('Run cart tests'){
+            steps{
+                bat "docker-compose -f test-suites.yaml up --exit-code-from cart_items_suite"
             }
         }
     }
