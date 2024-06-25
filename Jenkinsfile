@@ -21,8 +21,6 @@ pipeline{
         always{
             bat "docker-compose -f grid.yaml down"
             bat "docker-compose -f test-suites.yaml down"
-            archiveArtifacts artifacts: 'output/login-suite/emailable-report.html', followSymlinks: false
-            archiveArtifacts artifacts: 'output/cart-items-suite/emailable-report.html', followSymlinks: false
         }
     }
 }
