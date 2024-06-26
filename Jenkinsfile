@@ -21,7 +21,7 @@ pipeline{
         always{
             bat "docker-compose -f grid.yaml down"
             bat "docker-compose -f test-suites.yaml down"
-            junit 'test_results/junit.xml'
+            junit '/app/test_results/junit.xml'
         }
     }
 }
