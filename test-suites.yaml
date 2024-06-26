@@ -7,7 +7,7 @@ services:
       - grid_address=selenium-hub
       - TEST_GROUP=login
     volumes:
-      - ./local_login_suite:/app/test_results
+      - ./results/local_login_suite:/app/test_results
   cart_items_suite:
     image: guttekkk/selenium-training
     environment:
@@ -15,4 +15,4 @@ services:
       - grid_address=selenium-hub
       - TEST_GROUP=cart_items
     volumes:
-      - ./local_cart_items_suite:/app/test_results
+      - ./results/local_cart_items_suite:/app/test_results
