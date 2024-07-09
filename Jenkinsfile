@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     parameters{
-        choice choices: ["chrome_grid", "firefox_grid"], description: 'Select the browse', name: 'BROWSER'
+        choice choices: ["chrome", "firefox"], description: 'Select the browse', name: 'BROWSER'
     }
 
     stages{
