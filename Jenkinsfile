@@ -3,6 +3,7 @@ pipeline{
 
     parameters{
         choice choices: ["chrome", "firefox"], description: 'Select the browse', name: 'BROWSER'
+        string name: 'TEST_GROUP', defaultValue: 'login', description: 'Select the test group'
     }
 
     stages{
