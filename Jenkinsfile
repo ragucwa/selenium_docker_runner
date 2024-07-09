@@ -12,9 +12,15 @@ pipeline{
                 bat "docker-compose -f grid.yaml up --scale ${params.BROWSER}=2 -d"
             }
         }
-        stage('Run tests'){
-            steps{
-                bat "docker-compose -f test-suites.yaml up"
+        stage('Run tests') {
+            steps {
+                script {
+                    def exitCode = bat(script: "docker-compose -f test-suites.yaml up", returnStatus: true)
+                    if (exitCode != 0) {
+                        currentBuild.result = 'FAILED'
+                        error("Tests failed")
+                    }
+                }
             }
         }
     }
