@@ -23,8 +23,7 @@ pipeline{
             bat "docker-compose -f grid.yaml down"
             bat "docker-compose -f test-suites.yaml down"
             archiveArtifacts artifacts: 'results/**', allowEmptyArchive: true
-            junit 'results/local_cart_items_suite/*.xml'
-            junit 'results/local_login_suite/*.xml'
+            junit 'results/test_suite/*.xml'
         }
     }
 }
