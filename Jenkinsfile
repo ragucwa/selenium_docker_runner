@@ -1,19 +1,19 @@
 pipeline{
     agent any
+
+    parameters{
+        choice choices: ["chrome_grid", "firefox_grid"], description: 'Select the browse', name: 'BROWSER'
+    }
+
     stages{
         stage('Start grid'){
             steps{
-                bat "docker-compose -f grid.yaml up -d"
+                bat "docker-compose -f grid.yaml up --scale ${params.BROWSER}=2 -d"
             }
         }
-        stage('Run login tests'){
+        stage('Run tests'){
             steps{
-                bat "docker-compose -f test-suites.yaml up --exit-code-from login_suite"
-            }
-        }
-        stage('Run cart tests'){
-            steps{
-                bat "docker-compose -f test-suites.yaml up --exit-code-from cart_items_suite"
+                bat "docker-compose -f test-suites.yaml up"
             }
         }
     }
