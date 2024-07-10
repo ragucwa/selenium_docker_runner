@@ -16,8 +16,12 @@ pipeline{
             steps {
                 script {
                     def exitCode = bat(script: "docker-compose -f test-suites.yaml up --abort-on-container-exit", returnStatus: true)
-                    echo "Exit Code: ${exitCode}"
-                }       
+                    echo "Test suite exit code: ${exitCode}"
+                    if (exitCode != 0) {
+                        currentBuild.result = 'FAILED'
+                        error("Tests failed")
+                    }
+                }
             }
         }
     }
